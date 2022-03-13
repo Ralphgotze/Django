@@ -1,0 +1,6 @@
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <h1>Are you sure?</h1>
+    <button type="submit">Delete</button>
+</form>
