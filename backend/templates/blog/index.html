@@ -1,1 +1,15 @@
-BlogHomePage
+{% extends 'base.html' %}
+
+{% block title %}Ninerogues - HomePage{% endblock %}
+{% block  content %}
+    BlogHomePage
+    <br/>
+    {% for post in posts %}
+        <a href="{% url 'blog:post-detail' slug=post.slug %}">
+        {{ post.title }}<br/>
+        {{ post.exerp }}<br/>
+        {{ post.content }}<br/>
+        <br/>
+    {% endfor %}
+
+{% endblock content %}
