@@ -1,15 +1,30 @@
 {% extends 'base.html' %}
-
+{% load static %}
+<link rel="stylesheet" href="{% static '../static/css/blog.css' %}">
 {% block title %}Ninerogues - HomePage{% endblock %}
-{% block  content %}
-    BlogHomePage
+{% block  content %}}
+    </br>
+    <h1 class="title">Blog Home Page</h1>
     <br/>
-    {% for post in posts %}
-        <a href="{% url 'blog:post-detail' slug=post.slug %}">
-        {{ post.title }}<br/>
-        {{ post.exerp }}<br/>
-        {{ post.content }}<br/>
-        <br/>
-    {% endfor %}
-
+    <div class="cuadrado"></div>
+    <section class="post">
+        <div>
+            <div class="post-container">
+                {% for post in posts %}
+                    <article class="post-columna">
+                    <a href="{% url 'blog:post-detail' slug=post.slug %}">
+                        <img src="../blog{{post.image.url}}"alt="tractor">
+                    </a>
+                    <a href="{% url 'blog:post-detail' slug=post.slug %}">
+                        <h3>{{post.title}}</h3>
+                    </a>
+                    <a href="{% url 'blog:post-detail' slug=post.slug %}">
+                        {{post.content}}
+                    </a>
+                    </article>
+                    {% endfor %}
+            </div>
+            </div>
+    </section> 
+    </div>
 {% endblock content %}
