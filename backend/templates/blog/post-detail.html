@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block blog %}
+    </br></br></br></br></br>
+    <div class="cuadrado"></div>
+        <section class="productos">
+            <div>
+                <div class="contenedor">
+                    <article class="productos_columna">
+                        <div>
+                            <h3>{{post.title}}</h3>
+                            </br>
+                            <img src="../blog{{post.image.url}}"alt="{{post.title}}">
+                            </br>
+                            {{post.published}}
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+    </br>
+{% endblock blog %}
