@@ -7,7 +7,7 @@ def indexView(request):
     return render(request,'users/index.html')
 @login_required()
 def dashboardView(request):
-    return render(request,'users/dashboard.html')
+    return redirect('../../blog/')
 def registerView(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)

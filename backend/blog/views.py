@@ -1,16 +1,23 @@
+from genericpath import exists
 from django import views
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from requests import request
 from .models import Post
 
-class BlogHomePageView(TemplateView):
+
+
+class BlogHomePageView(LoginRequiredMixin,TemplateView):
     template_name='blog/index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["posts"] = Post.Postobjects.all()
         return context
+
+
 
 class PostDetailView(DetailView):
     model = Post
@@ -34,3 +41,7 @@ class PostDetailView(DetailView):
 #     else:
 #         form = Post()
 #     return render(request, 'blog/index.html', {'form': form})
+
+
+def UserView(request):
+    return render(request,'blog/index_logged.html')

@@ -2,6 +2,9 @@ from django.urls import path
 from . import views
 from django.contrib.auth.views import LoginView,LogoutView
 
+import blog.views
+
+
 app_name='account'
 
 urlpatterns = [

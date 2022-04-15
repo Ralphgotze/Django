@@ -35,16 +35,37 @@
         <div class="menu">
             <ul>
                 <li><a href="{% url 'blog:home' %}"><span>Inicio</span></a></li>
-                <li><a href="{% url 'account:login' %}"><span>Servicios</span></a></li>
-                <li><a href="#"><span>Nosotros</span></a></li>
-                <li><a href="#"><span>Productos</span></a></li>
-                <li><a href="#"><span>Contacto<span></a></li>
+                <li><a href="{% url 'blog:home' %}"><span>Tienda</span></a></li>
             </ul>
         </div>
+        <div class="navigation">
+            <div class="userBx">
+                <div class="imgBx">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI4vnlJLJLuMaG-zbOWESC2aN2hmzWzjySiF-gDp3WlZGtPS5UHDXO7RmKjpF0FW1Ecyk&usqp=CAU" alt="onana">
+                </div>
+                <p class="username">Andre Onana</p>
+            </div>
+            <div class="menuToggle"></div>
+            <ul class="menu-profile">
+                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+            </ul>
+        </div>
+        <script>
+            let menuToggle = document.querySelector('.menuToggle');
+            let navigation = document.querySelector('.navigation');
+            menuToggle.onclick = function(){
+                navigation.classList.toggle('active')
+            }
+        </script>
     {% endblock nav %}
 
     {% block content %}
     {% endblock content %}
-    {% block blog %}{% endblock blog %}
+    {% block blog %}
+    {% endblock blog %}
 </body>
 </html>
