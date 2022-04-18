@@ -1,16 +1,13 @@
 from django.urls import path
 from . import views
-from django.contrib.auth.views import LoginView,LogoutView
 
-import blog.views
+
 
 
 app_name='account'
 
 urlpatterns = [
-    path('',views.indexView,name="home"),
-    path('dashboard/',views.dashboardView,name="dashboard"),
-    path('login/',LoginView.as_view(),name="login"),
-    path('register/',views.registerView,name="register"),
-    path('logout/',LogoutView.as_view(next_page='../dashboard'),name="logout"),
+    path('',views.home,name='home'),
+    path('login/',views.login,name='login'),
+    path('register/',views.register,name='register'),
 ]

@@ -5,7 +5,6 @@ from django.contrib import admin
 from .views import (
     BlogHomePageView,
     PostDetailView,
-    UserView
 )
 
 app_name='blog'
