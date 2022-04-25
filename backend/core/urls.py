@@ -8,5 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',HomePageView.as_view(),name='Home'),
     path('blog/', include('blog.urls',namespace='blog')),
-    path('accounts/', include('accounts.urls',namespace='acount'))
+    path('accounts/', include('users.urls',namespace='users')),
 ]

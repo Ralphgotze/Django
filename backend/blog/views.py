@@ -1,4 +1,3 @@
-import imp
 from django import views
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
@@ -7,7 +6,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from requests import request
 from .models import Post
 
-import accounts.views
 
 
 
