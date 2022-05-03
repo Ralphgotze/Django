@@ -123,9 +123,10 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media/')
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# LOGIN_REDIRECT_URL = '/accounts/dashboard/'
-# LOGOUT_REDIRECT_URL = '/login'
+LOGIN_REDIRECT_URL = '/blog/'
+LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGIN_URL = 'accounts/login'
 
-AUTH_USER_MODEL = 'users.Usuario'
+# AUTH_USER_MODEL = 'users.Usuario'
 
-swappable = 'AUTH_USER_MODEL'
+# swappable = 'AUTH_USER_MODEL'

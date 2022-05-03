@@ -16,6 +16,8 @@
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
+    
+    
     {% block nav %}
         <header class="header">
             <div class="menu_bar">
@@ -38,12 +40,16 @@
                 <li><a href="{% url 'blog:home' %}"><span>Tienda</span></a></li>
             </ul>
         </div>
+
+        {% comment %} profile {% endcomment %}
+        {% if user.is_authenticated %}
         <div class="navigation">
             <div class="userBx">
                 <div class="imgBx">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI4vnlJLJLuMaG-zbOWESC2aN2hmzWzjySiF-gDp3WlZGtPS5UHDXO7RmKjpF0FW1Ecyk&usqp=CAU" alt="onana">
+                    <img src="{% url 'account:profile' %}..{{user.profile.image.url}}" "alt="{{user.username}}">
+                    {% comment %} <img src="account:profile{{user.profile.image.url}}"alt="{{user.username}}"> {% endcomment %}
                 </div>
-                <p class="username">Andre Onana</p>
+                <p class="username">{{user.username}}</p>
             </div>
             <div class="menuToggle"></div>
             <ul class="menu-profile">
@@ -61,11 +67,13 @@
                 navigation.classList.toggle('active')
             }
         </script>
+        {% endif %}
     {% endblock nav %}
 
     {% block content %}
     {% endblock content %}
     {% block blog %}
     {% endblock blog %}
+    {% block profile %}{% endblock profile %}
 </body>
 </html>

@@ -1,9 +1,9 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.contrib.auth.models import User
 
-class Usuario(AbstractUser):
-    # Tus propiedades personalizadas
-    # creditos = models.PositiveIntegerField(verbose_name='creditos',
-    #     default=0, 
-    #     blank=True)
-    pass
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    image = models.ImageField(null=True,blank=True,default='default.png',upload_to='profile-img',)
+
+    def __str__(self):
+        return f'{self.user.username} Profile'

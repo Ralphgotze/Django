@@ -26,7 +26,7 @@ class Post(models.Model):
     image = models.ImageField(null=True,blank=True,)
     slug = models.SlugField(max_length=255,unique_for_date='published',null=False,unique=True)
     published = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='blog_posts')
+    # author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='blog_posts')
     status = models.CharField(max_length=20,choices=options,default='draft')
     objects = models.Manager()
     Postobjects = PostObjects()

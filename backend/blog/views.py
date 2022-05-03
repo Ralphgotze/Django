@@ -10,7 +10,7 @@ from .models import Post
 
 
 
-class BlogHomePageView(LoginRequiredMixin,TemplateView):
+class BlogHomePageView(TemplateView):
     template_name='blog/index.html'
 
     def get_context_data(self, **kwargs):

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+#se agregan los posts en el admin
+admin.site.register(models.Profile)

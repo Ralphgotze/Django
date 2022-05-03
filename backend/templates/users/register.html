@@ -9,23 +9,10 @@
 <body>
     <form method="POST">
         {% csrf_token %}
-        <div>
-            <label for="Name Input">User Name</label>
-            <input type="text" name="name">
-        </div>
-        <div>
-            <label for="Email Input">Email</label>
-            <input type="email" name="email">
-        </div>
-        <div>
-            <label for="Password Input">Password</label>
-            <input type="password" name="password">
-        </div>
-        <div>
-            <label for="Password Repeat">Repeat Password</label>
-            <input type="password" name="repassword">
-        </div>
-        <button type="submit">Submit</button>
-    </form>
+        {{form}}
+        <button type="submit">Sign Up</button>
+        <small>
+            Already have an account? <a href="#">Sign in</a>
+        </small>
 </body>
 </html>

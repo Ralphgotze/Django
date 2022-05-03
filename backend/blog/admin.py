@@ -5,7 +5,8 @@ from . import models #importamos los modelos de la carpeta actual
 #se agregan los posts en el admin
 @admin.register(models.Post)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('id','title','status','slug','author')
+    list_display = ('id','title','status','slug')
+    # ,'author'
     prepopulated_fields = {'slug': ('title',),}
 
 #se agregan los comentarios
