@@ -5,12 +5,14 @@ from django.contrib import admin
 from .views import (
     BlogHomePageView,
     PostDetailView,
+    PostCreateView
 )
 
 app_name='blog'
 
 urlpatterns = [
     path('',BlogHomePageView.as_view(),name='home'),
+    path('create/',PostCreateView.as_view(),name='create-post'),
     path('<slug:slug>',PostDetailView.as_view(),name='post-detail'),
 ]
 

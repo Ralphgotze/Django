@@ -12,15 +12,18 @@
             <div class="post-container">
                 {% for post in posts %}
                     <article class="post-columna">
-                    <a href="{% url 'blog:post-detail' slug=post.slug %}">
-                        <img src="../blog{{post.image.url}}"alt="Post">
-                    </a>
-                    <a href="{% url 'blog:post-detail' slug=post.slug %}">
+                    {% comment %} <a href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
+                        
+                        {% comment %} <img src="../blog{{post.image.url}}"alt="Post"> {% endcomment %}
+                    {% comment %} </a> {% endcomment %}
+                    {% comment %} <a href="{{ post.get_absolute_url }}">{{post.title }}</a> {% endcomment %}
+                    {% comment %} <a href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
                         <h3>{{post.title}}</h3>
-                    </a>
-                    <a href="{% url 'blog:post-detail' slug=post.slug %}">
+                        <h3>{{post.slug}}</h3>
+                    {% comment %} </a> {% endcomment %}
+                    {% comment %} <a href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
                         {{post.content}}
-                    </a>
+                    {% comment %} </a> {% endcomment %}
                     </article>
                     {% endfor %}
             </div>

@@ -38,6 +38,10 @@
             <ul>
                 <li><a href="{% url 'blog:home' %}"><span>Inicio</span></a></li>
                 <li><a href="{% url 'blog:home' %}"><span>Tienda</span></a></li>
+                {% if user.is_authenticated == False %}
+                    <li><a href="{% url 'account:login' %}"><span>Login</span></a></li>
+                    <li><a href="{% url 'account:register' %}"><span>Register</span></a></li>
+                {% endif %}
             </ul>
         </div>
 
@@ -47,19 +51,19 @@
             <div class="userBx">
                 <div class="imgBx">
                     <img src="{% url 'account:profile' %}..{{user.profile.image.url}}" "alt="{{user.username}}">
-                    {% comment %} <img src="account:profile{{user.profile.image.url}}"alt="{{user.username}}"> {% endcomment %}
                 </div>
                 <p class="username">{{user.username}}</p>
             </div>
             <div class="menuToggle"></div>
             <ul class="menu-profile">
-                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="{% url 'account:profile' %}"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
                 <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
                 <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
                 <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
                 <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
             </ul>
         </div>
+        {% endif %}
         <script>
             let menuToggle = document.querySelector('.menuToggle');
             let navigation = document.querySelector('.navigation');
@@ -67,13 +71,12 @@
                 navigation.classList.toggle('active')
             }
         </script>
-        {% endif %}
     {% endblock nav %}
 
-    {% block content %}
-    {% endblock content %}
-    {% block blog %}
-    {% endblock blog %}
+    {% block content %}{% endblock content %}
+    {% block blog %}{% endblock blog %}
     {% block profile %}{% endblock profile %}
+    {% block post %}{% endblock post %}
+    {% block upload-post %}{% endblock upload-post %}
 </body>
 </html>

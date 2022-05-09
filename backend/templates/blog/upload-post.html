@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block profile %}
+{% block upload-post %}
 </br></br></br></br></br></br>
 
-<h1>
-    {{user.username}}
-</h1>
-{% comment %} <img src="..{{user.profile.image.url}}" alt="profile"> {% endcomment %}
 
 <form method="POST">
     {% csrf_token %}
-    {{u_form|crispy}}
-    {{p_form|crispy}}
-    <button type="submit">Update</button>
+    {{form|crispy}}
+    <button type="submit">Upload</button>
 </form>
 <style>
     input[type="checkbox"] {
@@ -22,4 +17,4 @@
         display:none;
     }
 </style>
-{% endblock profile %}
+{% endblock upload-post %}
