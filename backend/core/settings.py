@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'core',
     'blog',
     'users',
+    'image',
     'crispy_forms',
 ]
 

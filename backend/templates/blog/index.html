@@ -17,10 +17,10 @@
                         {% comment %} <img src="../blog{{post.image.url}}"alt="Post"> {% endcomment %}
                     {% comment %} </a> {% endcomment %}
                     {% comment %} <a href="{{ post.get_absolute_url }}">{{post.title }}</a> {% endcomment %}
-                    {% comment %} <a href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
+                    <a href="{% url 'blog:post-detail' pk=post.pk %}">
                         <h3>{{post.title}}</h3>
                         <h3>{{post.slug}}</h3>
-                    {% comment %} </a> {% endcomment %}
+                    </a>
                     {% comment %} <a href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
                         {{post.content}}
                     {% comment %} </a> {% endcomment %}
