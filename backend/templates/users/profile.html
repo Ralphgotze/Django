@@ -1,25 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 {% block profile %}
-</br></br></br></br></br></br>
-
-<h1>
     {{user.username}}
-</h1>
-{% comment %} <img src="..{{user.profile.image.url}}" alt="profile"> {% endcomment %}
-
-<form method="POST">
-    {% csrf_token %}
-    {{u_form|crispy}}
-    {{p_form|crispy}}
-    <button type="submit">Update</button>
-</form>
-<style>
-    input[type="checkbox"] {
-        display:none;
-    }
-    input[type="checkbox"] + label{
-        display:none;
-    }
-</style>
 {% endblock profile %}

@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block upload-post %}
+{% block edit-profile %}
+</br></br></br></br></br></br>
 
+<h1>
+    {{user.username}}
+</h1>
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST">
     {% csrf_token %}
-    {{form.as_p}}
-    <br>
-    <button type="submit">Upload</button>
+    {{u_form.as_p}}
+    {{p_form.as_p}}
+    <button type="submit">Update</button>
 </form>
 <style>
     input[type="checkbox"] {
@@ -17,4 +21,4 @@
         display:none;
     }
 </style>
-{% endblock upload-post %}
+{% endblock edit-profile %}

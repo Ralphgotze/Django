@@ -2,28 +2,26 @@
 {% load static %}
 <link rel="stylesheet" href="{% static '../static/css/blog.css' %}">
 {% block title %}Ninerogues - HomePage{% endblock %}
-{% block  content %}}
-    </br>
+{% block  content %}
     <h1 class="title">Blog Home Page</h1>
-    <br/>
+    <br>
     <div class="cuadrado"></div>
     <section class="post">
         <div>
             <div class="post-container">
                 {% for post in posts %}
                     <article class="post-columna">
-                    {% comment %} <a href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
-                        
-                        {% comment %} <img src="../blog{{post.image.url}}"alt="Post"> {% endcomment %}
-                    {% comment %} </a> {% endcomment %}
-                    {% comment %} <a href="{{ post.get_absolute_url }}">{{post.title }}</a> {% endcomment %}
+                    <a href="{% url 'blog:post-detail' pk=post.pk %}">    
+                        <img src="../blog{{post.image.url}}"alt="Post">
+                    </a>
+                    <a href="{{ post.get_absolute_url }}">{{post.title }}</a>
                     <a href="{% url 'blog:post-detail' pk=post.pk %}">
                         <h3>{{post.title}}</h3>
                         <h3>{{post.slug}}</h3>
                     </a>
-                    {% comment %} <a href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
+                    <a href="{% url 'blog:post-detail' pk=post.pk %}">
                         {{post.content}}
-                    {% comment %} </a> {% endcomment %}
+                    </a>
                     </article>
                     {% endfor %}
             </div>

@@ -25,12 +25,18 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="{% url 'blog:home' %}"><i class="fas fa-home"></i></a></li>
                     <li><a href="#"><i class="fas fa-home"></i>Inicio</a></li>
-                    <li><a class="servicio" href="#"><i class="fa-solid fa-hand-holding-dollar"></i>Servicios</a></li>
-                    {% comment %} <li><a class="nosotros" href="{% url 'users:index' %}"><i class="fas fa-users"></i>Login</a></li> {% endcomment %}
-                    <li><a class="" href="#"><i class="fas fa-shopping-basket"></i>Productos</a></li>
+                    <li><a href="{% url 'blog:home' %}"><i class="fas fa-home"></i></a></li>
+                    <li><a class="servicio" href="#"><i class="fa-solid fa-hand-holding-dollar"></i>Tienda</a></li>
                     <li><a class="contacto" href="#"><i class="fas fa-user-alt"></i>Contacto</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="nosotros" href="{% url 'users:profile' %}"><i class="fas fa-users"></i>Profile</a></li>
+                        <li><a class="nosotros" href="{% url 'users:login' %}"><i class="fas fa-users"></i>Log out</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated == False %}
+                    <li><a class="nosotros" href="{% url 'users:register' %}"><i class="fas fa-users"></i>Register</a></li>
+                        <li><a class="nosotros" href="{% url 'users:login' %}"><i class="fas fa-users"></i>Login</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>
@@ -60,7 +66,7 @@
                 <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
                 <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
                 <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
-                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="{% url 'account:logout' %}"><ion-icon name="person-outline"></ion-icon>Log out</a></li>
             </ul>
         </div>
         {% endif %}
@@ -71,11 +77,13 @@
                 navigation.classList.toggle('active')
             }
         </script>
+        <br><br><br><br><br><br>
     {% endblock nav %}
 
     {% block content %}{% endblock content %}
     {% block blog %}{% endblock blog %}
     {% block profile %}{% endblock profile %}
+    {% block edit-profile %}{% endblock edit-profile %}
     {% block post %}{% endblock post %}
     {% block upload-post %}{% endblock upload-post %}
 </body>
