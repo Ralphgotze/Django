@@ -41,8 +41,8 @@ h1{
     margin: 10px; 
     text-align: center;
 }
-.productos_columna a p{
-    color: #fff;
+.productos_columna h3{
+    font-size: 15px;
 }
 .productos .contenedor{
     display: grid;

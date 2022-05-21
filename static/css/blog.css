@@ -8,38 +8,33 @@
 .title{
     text-align: center;
     margin: 50px;
-}
-
-/* Posts */
-
-  .post-container{ 
-    width:100%;
-    display: inline-block;
-    margin-left: 50%;
-    padding-bottom: 100px;
-  }
-  img{
-    width: 100%;
-    margin-bottom: 30px;
-  }
-
-  body{
-    margin: 0;
-    padding: 0;
-    background: #ebebeb;
-    font-family: sans-serif;
-}
-h1{
     font-size: 70px;
     color:#000;
     text-align: center;
 }
+
+/* Posts */
+
 .post-container{ 
     width:100%;
+    display: inline-block;
+    margin-left: 50%;
+    padding-bottom: 100px;
     margin: auto;
+}
+.post-container h3,a{
+    font-size: 15px;
 }
 img{
     width: 100%;
+    margin-bottom: 30px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: #ebebeb;
+    font-family: sans-serif;
 }
 .post-columna{
     border: solid 1px #b9b9b9;

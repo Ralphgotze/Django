@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static '../static/css/menu.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/detail.css' %}">
     <link rel="stylesheet" href="{% static '../static/css/blog.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/profile.css' %}">
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="{% static '../static/js/menu.js' %}"></script>
@@ -56,7 +57,7 @@
         <div class="navigation">
             <div class="userBx">
                 <div class="imgBx">
-                    <img src="{% url 'account:profile' %}..{{user.profile.image.url}}" "alt="{{user.username}}">
+                    <img src="{% url 'account:profile' %}..{{user.profile.image.url}}" alt="{{user.username}}">
                 </div>
                 <p class="username">{{user.username}}</p>
             </div>
