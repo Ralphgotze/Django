@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block edit-profile %}
+<h1>
+    {{user.username}}
+</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{u_form.as_p}}
+    {{p_form.as_p}}
+    <br>
+    <button type="submit">Upload</button>
+</form>
+<style>
+    input[type="checkbox"] {
+        display:none;
+    }
+    input[type="checkbox"] + label{
+        display:none;
+    }
+</style>
+{% endblock edit-profile %}

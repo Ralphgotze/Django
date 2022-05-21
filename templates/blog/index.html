@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static '../static/css/blog.css' %}">
+{% block title %}Ninerogues - HomePage{% endblock %}
+{% block  content %}
+    <h1 class="title">Blog Home Page</h1>
+    <br>
+    <div class="cuadrado"></div>
+    <section class="post">
+        <div>
+            <div class="post-container">
+                {% for post in posts %}
+                    <article class="post-columna">
+                    <a href="{% url 'blog:post-detail' pk=post.pk %}">    
+                        <img src="../blog{{post.image.url}}"alt="Post">
+                    </a>
+                    <a href="{{ post.get_absolute_url }}">{{post.title }}</a>
+                    <a href="{% url 'blog:post-detail' pk=post.pk %}">
+                        <h3>{{post.title}}</h3>
+                    </a>
+                    <a href="{% url 'blog:post-detail' pk=post.pk %}">
+                        {{post.content}}
+                    </a>
+                    </article>
+                    {% endfor %}
+            </div>
+            </div>
+    </section> 
+    </div>
+{% endblock content %}

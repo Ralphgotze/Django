@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static '../static/css/menu.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/detail.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/blog.css' %}">
+    <link rel="stylesheet" href="{% static '../static/css/profile.css' %}">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="{% static '../static/js/menu.js' %}"></script>
+    <script src="https://kit.fontawesome.com/33306ad813.js" crossorigin="anonymous"></script>
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    
+    
+    {% block nav %}
+        <header class="header">
+            <div class="menu_bar">
+                <a href="#" class="bt-menu"><i class="fas fa-bars"></i>Menu</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i>Inicio</a></li>
+                    <li><a href="{% url 'blog:home' %}"><i class="fas fa-home"></i></a></li>
+                    <li><a class="servicio" href="#"><i class="fa-solid fa-hand-holding-dollar"></i>Tienda</a></li>
+                    <li><a class="contacto" href="#"><i class="fas fa-user-alt"></i>Contacto</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="nosotros" href="{% url 'users:profile' %}"><i class="fas fa-users"></i>Profile</a></li>
+                        <li><a class="nosotros" href="{% url 'users:login' %}"><i class="fas fa-users"></i>Log out</a></li>
+                    {% endif %}
+                    {% if user.is_authenticated == False %}
+                    <li><a class="nosotros" href="{% url 'users:register' %}"><i class="fas fa-users"></i>Register</a></li>
+                        <li><a class="nosotros" href="{% url 'users:login' %}"><i class="fas fa-users"></i>Login</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <div class="menu">
+            <ul>
+                <li><a href="{% url 'blog:home' %}"><span>Inicio</span></a></li>
+                <li><a href="{% url 'blog:home' %}"><span>Tienda</span></a></li>
+                {% if user.is_authenticated == False %}
+                    <li><a href="{% url 'account:login' %}"><span>Login</span></a></li>
+                    <li><a href="{% url 'account:register' %}"><span>Register</span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        {% comment %} profile {% endcomment %}
+        {% if user.is_authenticated %}
+        <div class="navigation">
+            <div class="userBx">
+                <div class="imgBx">
+                    <img src="{% url 'account:profile' %}..{{user.profile.image.url}}" alt="{{user.username}}">
+                </div>
+                <p class="username">{{user.username}}</p>
+            </div>
+            <div class="menuToggle"></div>
+            <ul class="menu-profile">
+                <li><a href="{% url 'account:profile' %}"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="#"><ion-icon name="person-outline"></ion-icon>My Profile</a></li>
+                <li><a href="{% url 'account:logout' %}"><ion-icon name="person-outline"></ion-icon>Log out</a></li>
+            </ul>
+        </div>
+        {% endif %}
+        <script>
+            let menuToggle = document.querySelector('.menuToggle');
+            let navigation = document.querySelector('.navigation');
+            menuToggle.onclick = function(){
+                navigation.classList.toggle('active')
+            }
+        </script>
+        <br><br><br><br><br><br>
+    {% endblock nav %}
+
+    {% block content %}{% endblock content %}
+    {% block blog %}{% endblock blog %}
+    {% block profile %}{% endblock profile %}
+    {% block edit-profile %}{% endblock edit-profile %}
+    {% block post %}{% endblock post %}
+    {% block upload-post %}{% endblock upload-post %}
+</body>
+</html>

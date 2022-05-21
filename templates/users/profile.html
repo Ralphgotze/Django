@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static '../../static/css/profile.css' %}">
+{% block title %}Profile{% endblock %}
+{% block profile %}
+<header>
+	<div class="container">
+		<div class="profile">
+			<div class="profile-image">
+				<img src="{% url 'account:profile' %}..{{user.profile.image.url}}" alt="{{user.username}}">
+			</div>
+			<div class="profile-user-settings">
+				<h1 class="profile-user-name">{{user.username}}</h1>
+				<a href="{% url 'account:edit-profile' %}"><button class="btn profile-edit-btn">Edit Profile</button></a>
+				<button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+			</div>
+            <div class="profile-bio">
+				<p><span class="profile-real-name">{{user.first_name}}</p>
+			</div> 
+			<div class="profile-stats">
+				<ul>
+					    <li><span class="profile-stat-count">{{posts.count}}</span> posts</li>
+					<li><span class="profile-stat-count">188</span> followers</li>
+					<li><span class="profile-stat-count">206</span> following</li>
+				</ul>
+			</div>
+			
+		</div>
+		<!-- End of profile section -->
+	</div>
+</header>
+<h1>Publicaciones</h1><br>
+<main>
+    <section class="profile-post">
+        <div>
+            <div class="profile-post-container">
+            {% for post in posts %}
+                <article class="profile-post-columna">
+                <a href="{% url 'blog:post-detail' pk=post.pk %}">    
+                    <img src="../../blog{{post.image.url}}"alt="Post">
+                </a>
+                <a href="{% url 'blog:post-detail' pk=post.pk %}">
+                    <h3>{{post.title}}</h3>
+                </a><br>
+                <a href="{% url 'blog:post-detail' pk=post.pk %}">
+                    <h3>Posted by: {{post.author}}</h3>
+                </a><br>
+                <a href="{% url 'blog:post-detail' pk=post.pk %}">
+                    <h3>{{post.published}}</h3>
+                </a>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section> 
+    </div> 
+</main>
+{% endblock profile %}
