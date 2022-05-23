@@ -5,7 +5,6 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.views.generic import TemplateView
 from blog.models import Post
 from .models import User
-from django.shortcuts import get_object_or_404
 
 
 def register(request):
@@ -46,17 +45,7 @@ def editProfile(request):
 
     return render(request,'users/edit-profile.html',context)
 
-# def profile(request):
-#     return render(request,'users/profile.html')
-
-# class profile(TemplateView):
-#     template_name='users/profile.html'    
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["posts"] = Post.Postobjects.filter(author=User.username())
-#         return context
-
+@login_required
 def profile(request):
   user = request.user
   profile = User.objects.filter(username = user)

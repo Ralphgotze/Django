@@ -1,12 +1,10 @@
-from django import views
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from django.urls import reverse
 from django.views.generic.detail import DetailView
-from django.views.generic import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post
 from .forms import PostCreateView
+from django.contrib.auth.decorators import login_required
 
 class BlogHomePageView(TemplateView):
     template_name='blog/index.html'    
@@ -22,7 +20,7 @@ class PostDetailView(DetailView):
     context_object_name = 'post'
     
     
-
+@login_required
 def image_upload_view(request):
     if request.method == 'POST':
         form = PostCreateView(request.POST, request.FILES)

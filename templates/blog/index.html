@@ -14,10 +14,9 @@
                     <a href="{% url 'blog:post-detail' pk=post.pk %}">    
                         <img src="../blog{{post.image.url}}"alt="Post">
                     </a>
-                    <a href="{{ post.get_absolute_url }}">{{post.title }}</a>
                     <a href="{% url 'blog:post-detail' pk=post.pk %}">
                         <h3>{{post.title}}</h3>
-                    </a>
+                    </a><br>
                     <a href="{% url 'blog:post-detail' pk=post.pk %}">
                         {{post.content}}
                     </a>

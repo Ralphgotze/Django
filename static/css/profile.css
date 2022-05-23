@@ -1,12 +1,12 @@
-html {
+/* html {
     font-size: 10px;
-}
+} */
 
 body {
     font-family: "Open Sans", Arial, sans-serif;
     min-height: 100vh;
     color: #262626;
-    padding-bottom: 3rem;   
+    padding-bottom: 3rem;
 }
 img {
     display: block;
@@ -28,26 +28,19 @@ img {
 .btn:focus {
     outline: 0.5rem auto #4d90fe;
 }
-.visually-hidden {
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-}
 
 /* Profile Section */
 .profile {
     padding: 5rem 0;
+    font-size: 10px;
 }
 .profile::after {
-    content: "";
     display: block;
     clear: both;
 }
 .profile-image {
     float: left;
-    width: calc(33.333% - 1rem);
+    width: calc(3.333% - 1rem);
     height: 120%;
     display: flex;
     justify-content: center;
@@ -56,6 +49,7 @@ img {
 }
 .profile-image img {
     border-radius: 50%;
+    width: 50%;
 }
 .profile-user-settings,
 .profile-stats,
@@ -72,9 +66,9 @@ img {
     font-weight: 300;
 }
 .profile-edit-btn {
-    font-size: 1.4rem;
+    font-size: 22px;
     line-height: 1.8;
-    border: 0.1rem solid #dbdbdb;
+    border: 1.5px solid #dbdbdb;
     border-radius: 0.3rem;
     padding: 0 2.4rem;
     margin-left: 2rem;

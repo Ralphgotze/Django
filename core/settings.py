@@ -120,13 +120,7 @@ MEDIA_ROOT =  os.path.join(BASE_DIR, 'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-LOGIN_REDIRECT_URL = '/blog/'
-LOGOUT_REDIRECT_URL = '/accounts/login'
-LOGIN_URL = 'accounts/login'
-
-# AUTH_USER_MODEL = 'users.Usuario'
-
-# swappable = 'AUTH_USER_MODEL'
+LOGIN_REDIRECT_URL = 'blog:home'
+LOGOUT_REDIRECT_URL = 'account:login'
+LOGIN_URL = 'account:login'

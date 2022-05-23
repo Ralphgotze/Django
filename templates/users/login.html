@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block account %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +10,27 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST">
-        {% csrf_token %}
-        {{form}}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="login-container">
+        <div class="img-container">
+            <img src="../media/assets/user-login.png">
+        </div>
+        <form method="POST" class="login-form">
+            {% csrf_token %}
+            <div>
+                <h4>Username<h4>
+                {{form.username}}
+            </div>
+            <div>
+                <h4>password<h4>
+                {{form.password}}
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <br>
+            <small>
+                Not have an account? <a href="{% url 'account:register' %}">create account</a>
+            </small>
+        </form>
+    </div>
 </body>
 </html>
+{% endblock account %}
