@@ -13,6 +13,24 @@
                             <h3>{{post.content}}</h3></br>
                             <h3>{{post.published}}</h3></br>
                             <h3>Posted by: {{post.author}}</h3>
+                            <br> 
+                            {% if user.is_authenticated %}
+                            <form method="POST" enctype="multipart/form-data" class="form-comment">
+                                {% csrf_token %}
+                                <div class="img-user-comment-container">
+                                    <img class="img-user-comment" src="{% url 'account:profile' %}..{{user.profile.image.url}}" alt="{{user.username}}">
+                                </div>
+                                <div class="comment-post-container">
+                                    {{form.content}}
+                                </div><br><br>
+                                <button type="submit" class="comment-button">Comment</button>
+                              </form>
+                            {% endif %}
+                            <br><br>
+                            {% for comment in comments %}
+                                <h3>{{comment.content}}</h3><br>
+                                <h3>{{comment.name}}</h3><br>
+                            {% endfor %}
                         </div>
                     </article>
                 </div>
@@ -20,4 +38,5 @@
         </section>
     </div>
     </br>
+    
 {% endblock blog %}

@@ -14,7 +14,7 @@
         <div class="img-container">
             <img src="../media/assets/user-login.png">
         </div>
-        <form method="POST" class="login-form">
+        <form method="POST" enctype="multipart/form-data" class="login-form">
             {% csrf_token %}
             <div>
                 <h4>Username<h4>

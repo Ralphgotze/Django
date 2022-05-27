@@ -14,7 +14,7 @@ app_name='blog'
 urlpatterns = [
     path('',BlogHomePageView.as_view(),name='home'),
     path('<int:pk>',views.PostDetailView.as_view(),name='post-detail'),
-    path('create/',views.image_upload_view,name='create-post')
+    path('create/',views.image_upload_view,name='create-post'),
 ]
 
 if settings.DEBUG:

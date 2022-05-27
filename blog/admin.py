@@ -11,9 +11,9 @@ class AuthorAdmin(admin.ModelAdmin):
 #se agregan los comentarios
 @admin.register(models.Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('post','name','email','publish','status')
-    list_filter = ('status','publish')
-    search_fields = ('name','email','content')
+    list_display = ('post','name','publish_date','status')
+    list_filter = ('status','publish_date')
+    search_fields = ('name','content')
 
 #se agregan las categorias
 admin.site.register(models.Category)

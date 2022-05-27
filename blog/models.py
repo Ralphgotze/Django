@@ -1,10 +1,7 @@
-from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
-from django.shortcuts import redirect,HttpResponseRedirect
 from django.utils import timezone
 from django.urls import reverse
-from PIL import Image
 
 
 class Category(models.Model):
@@ -25,7 +22,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     category = models.ForeignKey(Category,on_delete=models.PROTECT,default=1)
     content = models.TextField()
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True,upload_to='image-post')
     published = models.DateTimeField(default=timezone.now,editable=False)
     author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='blog_posts')
     status = models.CharField(max_length=20,choices=options,default='published')
@@ -38,30 +35,18 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    # def save(self, *args, **kwargs):
-    #     super(Post, self).save(*args, **kwargs)
-
-    #     img = Image.open(self.image.path)
-
-    #     if img.height > 300 or img.width > 300:
-    #         output_size = (300,300)
-    #         img.thumbnail(output_size)
-    #         img.save(self.image.path)
-    
     class Meta:
         ordering = ('published',)
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.PROTECT,related_name="comments")
-    name = models.CharField(max_length=50)
-    email = models.EmailField()
+    name = models.ForeignKey(User,on_delete=models.PROTECT)
     content = models.TextField()
-    publish = models.DateTimeField(auto_now_add=True)
+    publish_date = models.DateTimeField(default=timezone.now)
     status = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ("publish",)
+        ordering = ("publish_date",)
 
         def __str__(self):
             return f"comment by: {self.name}"
-
