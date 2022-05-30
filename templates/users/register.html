@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +10,39 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{form}}
-        <button type="submit">Sign Up</button>
-        <small>
-            Already have an account? <a href="{% url 'account:login' %}">Sign in</a>
-        </small>
-    </form>
+    <div class="login-container">
+        <div class="img-container">
+            <img src="../media/assets/user-login.png">
+        </div>
+        <form method="POST" enctype="multipart/form-data" class="login-form">
+            {% csrf_token %}
+            <div>
+                <h4>Name<h4>
+                {{form.first_name}}
+            </div>
+            <div>
+                <h4>Username<h4>
+                {{form.username}}
+            </div>
+            <div>
+                <h4>Email<h4>
+                {{form.first_name}}
+            </div>
+            <div>
+                <h4>Password<h4>
+                {{form.password1}}
+            </div>
+            <div>
+                <h4>Repeat password<h4>
+                {{form.password2}}
+            </div>
+            <button type="submit" class="login-button">Login</button>
+            <br>
+            <small>
+                Already have an account? <a href="{% url 'account:login' %}">Sign in</a>
+            </small>
+        </form>
+    </div>
 </body>
 </html>
+{% endblock content %}

@@ -6,6 +6,7 @@ from .views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("__reload__/", include("django_browser_reload.urls")),
     path('',HomePageView.as_view(),name='Home'),
     path('blog/', include('blog.urls',namespace='blog')),
     path('accounts/', include('users.urls',namespace='users')),

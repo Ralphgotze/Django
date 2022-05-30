@@ -26,11 +26,20 @@ INSTALLED_APPS = [
     'core',
     'blog',
     'users',
+
     'crispy_forms',
+    'tailwind',
+    'tailwind_theme'    ,
+
+    # 'django_browser_reload',
+    # 'webpack_loader',
+    'widget_tweaks',
 ]
 
+TAILWIND_APP_NAME = 'tailwind_theme'
 CRISPY_TEMPLATE_PACK =  'bootstrap4'
 
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -40,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
+
 ]
 
 ROOT_URLCONF = 'core.urls'

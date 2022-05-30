@@ -3,6 +3,16 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post,Comment
 
 class PostCreateView(forms.ModelForm,LoginRequiredMixin):
+    # title = forms.CharField(label='nigga',widget=forms.CharField(attrs={'class':'a'}))
+    title = forms.CharField(label='nigga',
+        widget=forms.TextInput(attrs={
+            'placeholder':'Title',
+            # 'class':'border-2 border-rose-500'
+            }
+            )
+        )
+    
+
     class Meta:
         model = Post
         fields = ('title','category','content','image','status')

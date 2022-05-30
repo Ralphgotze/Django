@@ -1,5 +1,5 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.http import HttpResponse,HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post,Comment
 from .forms import PostCreateView,CommentForm
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 class BlogHomePageView(TemplateView):
     template_name='blog/index.html'    
@@ -15,9 +16,6 @@ class BlogHomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["posts"] = Post.Postobjects.all()
         return context
-
-
-
 
 
 class PostDetailView(LoginRequiredMixin,View):
@@ -46,15 +44,7 @@ class PostDetailView(LoginRequiredMixin,View):
                 comment.name = request.user
                 comment.post = post
                 comment.save()
-
-                # form.instance.name = request.user
-                # form.instance.post = post
-                # form.instance.content = request.POST
-
-                # form.save
-                comment.save()
-                # comment = form.instance
-                # return render(request,'blog/post-detail.html',{'post':post,'form':form,'comments':comments})
+                # comment.save()
                 return redirect('blog:post-detail',pk)
 
             context = {
@@ -63,7 +53,6 @@ class PostDetailView(LoginRequiredMixin,View):
                 'comments':comments
             }
         return render(request,'blog/post-detail.html',context)
-        # return redirect('blog/post-detail.html'+pk)
 
     
 @login_required
@@ -82,17 +71,63 @@ def image_upload_view(request):
 
 
   
-# def comment_detailview(request, pk):
-    
-#   if request.method == 'POST':
-#     post = get_object_or_404(Post, pk=pk)
-#     if request.method == "POST":
-#         form = CommentCreateView(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.post = post
-#             comment.save()
-#             return redirect('post_detail', pk=post.pk)
-#     else:
-#         form = CommentCreateView()
-#     return render(request, 'blog/post-detail.html', {'comment_form': form})
+
+
+class AddLike(LoginRequiredMixin,View):
+    def post(self,request,pk,*args, **kwargs):
+        post = Post.objects.get(pk=pk)
+
+        is_dislike = False
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+        
+            if dislike:
+                post.dislikes.remove(request.user)
+
+
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+
+        if not is_like:
+            post.likes.add(request.user)
+            post.dislikes.remove(request.user)
+
+        if is_like:
+            post.likes.remove(request.user)
+
+        
+        return redirect('blog:post-detail',pk)
+
+class AddDislike(LoginRequiredMixin,View):
+    def post(self,request,pk,*args, **kwargs):
+        post = Post.objects.get(pk=pk)
+
+        is_like = False
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+        
+        if is_like:
+            post.likes.remove(request.user)
+
+        is_dislike = False
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+
+        if not is_dislike:
+            post.dislikes.add(request.user)
+            post.likes.remove(request.user)
+        
+        if is_dislike:
+            post.dislikes.remove(request.user)
+        
+        return redirect('blog:post-detail',pk)

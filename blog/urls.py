@@ -13,8 +13,11 @@ app_name='blog'
 
 urlpatterns = [
     path('',BlogHomePageView.as_view(),name='home'),
-    path('<int:pk>',views.PostDetailView.as_view(),name='post-detail'),
+    path('<int:pk>/',views.PostDetailView.as_view(),name='post-detail'),
     path('create/',views.image_upload_view,name='create-post'),
+
+    path('<int:pk>/like/',views.AddLike.as_view(),name='like'),
+    path('<int:pk>/dislike/',views.AddDislike.as_view(),name='dislike'),
 ]
 
 if settings.DEBUG:

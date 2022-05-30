@@ -1,18 +1,44 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block upload-post %}
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <br>
-    <button type="submit">Upload</button>
-</form>
-<style>
-    input[type="checkbox"] {
-        display:none;
-    }
-    input[type="checkbox"] + label{
-        display:none;
-    }
-</style>
-{% endblock upload-post %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br>
+    <div class="container mx-auto">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <h4>Title<h4>
+                {{form.title}}
+            </div>
+            <div>
+                <h4>Category<h4>
+                {{form.category}}
+            </div>
+            <div>
+                <h4>Content<h4>
+                {{form.content}}
+            </div>
+            <div>
+                <h4>Image<h4>
+                {{form.image}}
+            </div>
+            <div>
+                <h4>Status<h4>
+                {{form.status}}
+            </div>
+            <button type="submit" class="text-blue-600">Upload Post</button>
+            <br><br><br>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}
