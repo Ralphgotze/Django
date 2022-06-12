@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load widget_tweaks %}
+{% comment %} {% load widget_tweaks %} {% endcomment %}
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
@@ -11,31 +11,28 @@
     <title>Document</title>
 </head>
 <body>
-    <br><br><br>
+    <br><br><br><br>
     <div class="container mx-auto">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" class="ml-2">
             {% csrf_token %}
             <div>
-                <h4>Title<h4>
-                {{form.title}}
+                <h2>Create a post<h2>
             </div>
+            <br>
+            <div >{{form.title}}</div><br>
             <div>
                 <h4>Category<h4>
                 {{form.category}}
-            </div>
-            <div>
-                <h4>Content<h4>
-                {{form.content}}
-            </div>
-            <div>
-                <h4>Image<h4>
-                {{form.image}}
-            </div>
+            </div><br>
+            <div>{{form.content}}</div><br>
+            <div>{{form.image}}</div><br>
             <div>
                 <h4>Status<h4>
                 {{form.status}}
+            </div><br>
+            <div class="border-2 border-blue-500">
+                <button type="submit" >Upload Post</button>
             </div>
-            <button type="submit" class="text-blue-600">Upload Post</button>
             <br><br><br>
         </form>
     </div>
